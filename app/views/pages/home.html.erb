@@ -1,0 +1,127 @@
+<% if current_user %>
+<% if current_user.role == 'admin' %>
+
+<div class="page-content mt-5">
+	<div class="container-fluid mt-5">
+
+	<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+
+			<h4 class="card-title">All Job Applications</h4>
+			<p class="card-title-desc">Here all job applications are displayed.</p>
+
+			<div class="table-rep-plugin">
+				<div class="table-responsive mb-0" data-pattern="priority-columns">
+					<table id="tech-companies-1" class="table  table-striped">
+						<thead>
+							<tr>
+								<th data-priority="1">Applicant</th>
+								<th data-priority="3">Email</th>
+								<th data-priority="1">Offer</th>
+								<th data-priority="3">Comment</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% @job_applications.each do |job_application| %>
+							<tr>
+							  <td><%= job_application.user.try(:full_name) %></td>
+							  <td><%= job_application.user.try(:email) %></td>
+							  <td> <%= job_application.job_offer.title %></td>
+							  <td><%= job_application.cover_letter %></td>
+							  <!-- Add any other desired columns -->
+							</tr>
+						  <% end %>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	</div>
+	<!-- container-fluid -->
+	<div class="mt-5 text-center text-muted">
+	© 2023 New Job Offers <span
+		class=" d-none d-sm-inline-block"> - Powered by Marval</span>
+</div>
+</div>
+
+
+<%else%>
+
+<div class="page-content mt-5">
+	<div class="container-fluid mt-5">
+
+	<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+
+			<h4 class="card-title">All Job Offers</h4>
+			<p class="card-title-desc">Here all job Offers are displayed.</p>
+
+			<div class="table-rep-plugin">
+				<div class="table-responsive mb-0" data-pattern="priority-columns">
+					<table id="tech-companies-1" class="table  table-striped">
+						<thead>
+							<tr>
+								<th data-priority="1">Title</th>
+								<th data-priority="3">Description</th>
+								<th data-priority="1">View / Apply</th>
+							</tr>
+						</thead>
+						<tbody>
+			
+						<% if @job_offer.present? %>
+						<% @job_offer.each do |job_offer| %>
+						  <tr>
+						  <td><%=job_offer.title %></td>
+						  <td><%= job_offer.description %></td>
+						  <td><%= link_to "Show this job offer", job_offer %></td>
+						  </tr>
+						<% end %>
+					  <% else %>
+						<tr>
+						  <td colspan="2">No job offers available</td>
+						</tr>
+					  <% end %>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	</div>
+	<!-- container-fluid -->
+	<div class="mt-5 text-center text-muted">
+	© 2023 New Job Offers <span
+		class=" d-none d-sm-inline-block"> - Powered by Marval</span>
+</div>
+</div>
+<%end%>
+<%else%>
+<div class="pt-sm-5 main-bg">
+<div class="d-flex flex-column min-vh-100 min-vw-100">
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center text-white">
+        <div class="col-md-8 col-lg-6 col-xl-5 ">
+            <div class="card overflow-hidden blurred">
+                <div class="card-body py-2">
+                    <div class="p-3 text-center">
+                    <h4 class="text-muted font-size-18 mb-1 text-center">Welcome!</h4>
+                    <p class="text-muted text-center">Sign in to view ours New Job Offers.</p>
+                 <%= link_to "Login", new_user_session_path,class: 'btn btn-primary waves-effect waves-light' %>                    </div>
+                </div>
+            </div>
+            <div class="mt-5 text-center text-muted">
+                © 2023 New Job Offers <span
+                    class=" d-none d-sm-inline-block"> - Powered by Marval</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<%end%>

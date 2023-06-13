@@ -1,0 +1,54 @@
+<div class="account-pages my-5 pt-sm-5">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <div class="card overflow-hidden">
+                <div class="card-body pt-0">
+                <%= link_to "Back", '/',class: 'btn btn-outline-dark waves-effect waves-light mt-4' %> 
+                    <h3 class="text-center mt-5 mb-4">
+                    <!-- logo -->
+                    </h3>
+                    <div class="p-3">
+                        <h4 class="text-muted font-size-18 mb-1 text-center">Welcome Back !</h4>
+                        <p class="text-muted text-center">Sign in to continue to New Job Offers.</p>
+                        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal mt-4' }) do |f| %>
+                            <div class="mb-3">
+                                <label for="useremail">Email</label>
+                                <%= f.email_field :email, class:'form-control', id:'useremail', autofocus: true, autocomplete: "email" %>
+                            </div>
+                            <div class="mb-3">
+                                <label for="userpassword">Password</label>
+                                <%= f.password_field :password, autocomplete: "current-password", class:'form-control',id:'userpassword' %>
+                            </div>
+                            <div class="mb-3 row mt-4">
+                            <% if devise_mapping.rememberable? %>
+                            <div class="col-6">
+                            <div class="form-check">
+                              <%= f.check_box :remember_me, class:'form-check-input' ,id:'customControlInline' %>
+                              <label class="form-check-label" for="customControlInline">Remember me
+                              </label>
+                              </div>
+                              </div>
+                          <% end %>
+                                <div class="col-6 text-end">
+                                <%= f.submit "Log in", class:'btn btn-primary w-md waves-effect waves-light',data:{turbo:false} %>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0 row">
+                                <div class="d-flex col-12 mt-4">
+                                <i class="mdi mdi-lock"></i>
+                                <%= link_to "Forgot your password?" ,new_password_path(resource_name) ,class:'text-muted'%>
+                                </div>
+                            </div>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-5 text-center">
+                © 2023 New Job Offers <span
+                    class="d-none d-sm-inline-block"> - Powered by Marval</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

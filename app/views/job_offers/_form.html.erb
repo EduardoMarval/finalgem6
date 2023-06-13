@@ -1,0 +1,43 @@
+<%= form_with(model: job_offer) do |form| %>
+  <% if job_offer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(job_offer.errors.count, "error") %> prohibited this job_offer from being saved:</h2>
+      <ul>
+        <% job_offer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= link_to "Back", '/',class: 'btn btn-outline-dark waves-effect waves-light mt-4' %> 
+      <h3 class="text-center mt-5 mb-4">
+      <!-- logo -->
+      </h3>
+      <div class="p-3">
+          <h4 class="text-muted font-size-18 mb-1 text-center">Hello Admin!</h4>
+          <p class="text-muted text-center"> Do you want to create a new Job Offer?</p>
+          <div class="mb-3">
+          <label class='text-dark'>Title</label>
+          <%= form.text_field :title, class:'form-control', autofocus: true, autocomplete: "title" %>
+        </div>
+        <div class="mb-3">
+  <label class='text-dark'>Description</label>
+  <%= form.text_area :description , class:'form-control', autofocus: true, autocomplete: "title" %>
+  </div>
+              <div class="mb-3 row mt-4">
+              <div class="col-6">
+              <div class="form-check">
+                </div>
+                </div>
+                  <div class="col-6 text-end">
+                  <%= form.submit  class: 'mt-4 btn btn-primary w-md waves-effect waves-light' %>
+                  </div>
+              </div>
+              <div class="form-group mb-0 row">
+                  <div class="d-flex col-12 mt-4">
+                  <i class="mdi mdi-lock"></i>
+                  </div>
+              </div>
+      </div>
+<% end %>
+

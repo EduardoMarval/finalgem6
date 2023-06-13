@@ -1,0 +1,24 @@
+<h1>All Job Applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Applicant Name</th>
+      <th>Applicant Email</th>
+      <th>Job Offer</th>
+      <th>Comment</th>
+      <!-- Add any other desired columns -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @job_applications.each do |job_application| %>
+      <tr>
+        <td><%= job_application.user.try(:full_name) %></td>
+        <td><%= job_application.user.try(:email) %></td>
+        <td> <%= job_application.job_offer.title %></td>
+        <td><%= job_application.cover_letter %></td>
+        <!-- Add any other desired columns -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>

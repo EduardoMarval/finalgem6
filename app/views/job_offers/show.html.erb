@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="d-flex flex-column min-vh-100 min-vw-100">
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center text-white">
+        <div class="col-md-8 col-lg-6 col-xl-5 ">
+            <div class="card overflow-hidden">
+                <div class="card-body py-2">
+                    <div class="p-3">
+                    <div>
+                    <% if current_user.role == 'admin' %>
+                    <div class="mb-3">
+                    <%= link_to "Edit this job offer", edit_job_offer_path(@job_offer) %> |
+                    <%= link_to "Back to job offers", job_offers_path %>
+                    <%= button_to "Destroy this job offer", @job_offer, method: :delete  ,class: 'mt-4 btn btn-danger w-md waves-effect waves-light'%>
+                  </div>
+                  <%end%>
+                  <%= render @job_offer %>
+                  <%= form_with(model: @job_application, url: job_offer_job_applications_path(@job_offer), local: true) do |form| %>
+                    <!-- Form fields for cover letter and resume -->
+                    <div class="mb-3">
+                    <%= form.text_area :cover_letter  , class:'form-control', placeholder: 'Enter your cover letter' %>
+                    </div>
+                    <%= form.submit 'Submit Application', class: 'mt-4 btn btn-primary w-md waves-effect waves-light' %>
+                  <% end %>
+                </div>
+                </div>
+            </div>
+            <div class="mt-5 text-center text-muted">
+                © 2023 New Job Offers <span
+                    class=" d-none d-sm-inline-block"> - Powered by Marval</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+

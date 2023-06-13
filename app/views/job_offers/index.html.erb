@@ -1,0 +1,53 @@
+
+
+<div class="page-content mt-5">
+	<div class="container-fluid mt-5">
+
+	<div class="col-12">
+	<div class="card">
+		<div class="card-body">
+
+			<h4 class="card-title">All Job Offers</h4>
+			<p class="card-title-desc">Here all job Offers are displayed.</p>
+
+			<div class="table-rep-plugin">
+				<div class="table-responsive mb-0" data-pattern="priority-columns">
+					<table id="tech-companies-1" class="table  table-striped">
+						<thead>
+							<tr>
+								<th data-priority="1">Title</th>
+								<th data-priority="3">Description</th>
+								<th data-priority="1">View / Apply</th>
+							</tr>
+						</thead>
+						<tbody>
+			
+						<% if @job_offers.present? %>
+            <% @job_offers.each do |job_offer| %>
+						  <tr>
+						  <td><%=job_offer.title %></td>
+						  <td><%= job_offer.description %></td>
+						  <td><%= link_to "Show this job offer", job_offer %></td>
+						  </tr>
+						<% end %>
+					  <% else %>
+						<tr>
+						  <td colspan="2">No job offers available</td>
+						</tr>
+					  <% end %>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	</div>
+	<!-- container-fluid -->
+	<div class="mt-5 text-center text-muted">
+	© 2023 New Job Offers <span
+		class=" d-none d-sm-inline-block"> - Powered by Marval</span>
+</div>
+</div>
