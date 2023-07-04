@@ -3,7 +3,7 @@
 # Create sample Admin
 User.create!(
   full_name: "John Doe",
-  email: "john@example.com",
+  email: "admin@example.com",
   password: "password",
   role: 1
 )
